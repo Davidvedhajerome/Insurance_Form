@@ -1,0 +1,56 @@
+name: Upload Files and Deploy
+
+on:
+  push:
+    branches:
+      - main  # Or any branch you want to trigger the workflow on
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out your repository
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Adjust to the Node.js version your project uses
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run tests (optional, but highly recommended)
+      - name: Run tests
+        run: npm test
+
+      # Build the application (if needed)
+      - name: Build application
+        run: npm run build  # Adjust this if you have a build step, otherwise skip this line
+
+      # Deploy to your server
+      - name: Deploy to Server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # Store private SSH key in GitHub secrets
+          HOST: ${{ secrets.HOST }}
+          USER: ${{ secrets.USER }}
+        run: |
+          # Example: Deploy to your server using SSH and SCP
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
+          
+          # Deploying files to your server (adjust the path accordingly)
+          scp -r ./public/uploads $USER@$HOST:/path/to/server/directory/uploads
+
+          # If you're using Node.js, you might restart your app like this (example):
+          ssh $USER@$HOST "pm2 restart app"  # Or use other commands depending on your server setup
+
+      # Optional: Notify on deployment (you can add this step for notifications)
+      - name: Send Deployment Notification
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Deployment to server was successful!"}' ${{ secrets.SLACK_WEBHOOK_URL }}  # Example for Slack notification
