@@ -44,7 +44,7 @@ const FileUpload = ({ onFileUpload }) => {
       <form onSubmit={onSubmit}>
         <div className="custom-file mb-4">
           <input type="file" className="custom-file-input" onChange={onChange} />
-          <label className="custom-file-label">Choose File</label>
+          <label className="custom-file-label"></label>
         </div>
         <input type="submit" value="Upload" className=" mt-4" />
       </form>
