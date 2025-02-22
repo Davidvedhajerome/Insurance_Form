@@ -22,15 +22,16 @@
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5"
   },
-  "homepage": "https://Davidvedhajerome.github.io/Insurance_From_Frontend",
+"homepage": "https://Davidvedhajerome.github.io/Insurance_Form/",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+},
+
   "eslintConfig": {
     "extends": [
       "react-app",
