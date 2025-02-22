@@ -15,6 +15,7 @@ app.use(cors({ origin: '*' })); // Allow all origins (for ngrok)
 app.use(bodyParser.json());
 app.use(fileUpload());
 app.use(express.static('public'));
+app.use('/output', express.static(path.join(__dirname, 'output')));
 
 mongoose.set('strictQuery', true);
 
@@ -47,8 +48,7 @@ app.post("/upload", (req, res) => {
   const file = req.files.file;
   const uploadDir = path.join(__dirname, 'public', 'uploads');
 
-  // Ensure the upload directory exists
-  if (!fs.existsSync(uploadDir)) {
+   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
   }
 
