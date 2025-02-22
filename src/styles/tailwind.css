@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+.card {
+  @apply w-full max-w-3xl bg-gradient-to-r from-blue-500 to-purple-500 p-6 shadow-2xl rounded-2xl;
+  max-height: 80vh; /* Limit height to fit viewport */
+  overflow-y: auto; /* Enable scrolling if content exceeds */
+}
+
+
+  @media (max-width: 768px) {
+    .card {
+      @apply max-w-full;
+      padding: 4px;
+    }
+
+    input,
+    button {
+      @apply text-sm;
+    }
+  }
+}

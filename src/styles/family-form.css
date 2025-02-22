@@ -3,7 +3,7 @@
 /* Form Container */
 /* Global Box Sizing and Border Defaults */
 /* Global Reset */
-
+@import './tailwind.css';
 .text-white {
     --tw-text-opacity: 1;
 }
@@ -431,8 +431,58 @@ h2 {
 }
 
 .mt-4 {
-  margin-top: 1rem;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: center;
+  text-transform: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
+
+.mt-4:focus {
+  outline-style: solid;
+  outline-color: transparent;
+}
+
+.mt-4 {
+
+  touch-action: manipulation;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.mt-4 {
+  touch-action: manipulation;
+  border: 1px solid #0360df;
+  border-radius: 50px;
+  padding: 12px 16px;
+  background-color: #0360df;
+  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff 12%, transparent), radial-gradient(75% 50% at 50% 85%, #8de3fc, transparent);
+  box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  color: #fff;
+    text-align: center;
+  text-shadow: 0 1px 1px #116ee7;
+  transition-property: border-color, transform, background-color;
+  transition-duration: 0.2s;
+}
+
+.mt-4:hover {
+  transform: scale(1.04);
+}
+
+.mt-4:active {
+  border-color: #0048d5;
+  transform: scale(0.96);
+  background-color: #0048d5;
+}
+
+
 
 .text-red-500 {
   color: #ef4444;
@@ -553,20 +603,25 @@ input {
 * {
   box-sizing: inherit;
 }
-
 body {
-     margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #4A90E2, #9B59B6);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;     /* Vertical centering */
+  height: 100vh;           /* Full viewport height */
+  margin: 0;               /* Remove default margin */
+  background: linear-gradient(to right, #4A90E2, #9B59B6); /* Gradient background */
+}
+
+
+.form-wrapper {
+    width: 90%; /* Adjust width dynamically */
+    max-width: 600px; /* Restrict it to a maximum size */
+    padding: 20px;
+    border-radius: 10px;
+    overflow: auto; /* Enable scroll if content overflows */
+
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Box Sizing for Pseudo-elements */
@@ -575,6 +630,17 @@ display: flex;
     border-width: 0;
     border-style: solid;
     border-color: #e5e7eb;
+}
+@media (min-width: 768px) {
+    .p-6 {
+        width: 60%; /* Make it wider for desktops */
+    }
+}
+
+@media (min-width: 1024px) {
+    .p-6 {
+        width: 40%; /* Further refine for larger desktops */
+    }
 }
 
 /* Default Body Margin Fix */
