@@ -137,7 +137,7 @@ const FamilyForm = () => {
     const formData = { ...family, uploadedFiles };
 
     try {
-      const response = await fetch(`https://insurance-form.onrender.com/submit-form`, {
+      const response = await fetch(`http://localhost:10000/submit-form`, {
         method: "POST", // Make sure it's POST
         headers: {
           "Content-Type": "application/json",

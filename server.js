@@ -10,7 +10,7 @@ const fileUpload = require("express-fileupload");
 const app = express();
 const PORT =10000;
 // Middleware
-app.use(cors({ origin: '*' })); // Allow all origins (for ngrok)
+app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 app.use(fileUpload());
 app.use(express.static('public'));
