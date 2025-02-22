@@ -19,7 +19,7 @@ app.use(express.static('public'));
 mongoose.set('strictQuery', true);
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://davidvedhaj:Jesus007@cluster0.t2khdwv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0\n', {})
+mongoose.connect('mongodb+srv://davidvedhaj:Jesus007@cluster0.t2khdwv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {})
   .then(() => console.log('MongoDB connected successfully'))
   .catch((err) => console.log('MongoDB connection error:', err));
 
