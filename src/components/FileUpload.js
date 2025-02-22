@@ -6,7 +6,6 @@ const FileUpload = ({ onFileUpload }) => {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
 
-  const ngrokURL = 'https://89e8-36-255-17-207.ngrok-free.app'; // Replace with your actual ngrok URL
 
   const onChange = (e) => {
     if (e.target.files.length > 0) {
@@ -25,7 +24,7 @@ const FileUpload = ({ onFileUpload }) => {
     formData.append('file', file);
 
     try {
-      const res = await axios.post(`${ngrokURL}/upload`, formData, {
+      const res = await axios.post(`https://insurance-form.onrender.com/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 

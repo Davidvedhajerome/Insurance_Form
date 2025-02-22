@@ -61,8 +61,8 @@ app.post("/upload", (req, res) => {
     }
 
     // Use ngrok public URL for file access
-    const ngrokPublicURL = 'https://89e8-36-255-17-207.ngrok-free.app';
-    res.json({ fileName: file.name, filePath: `${ngrokPublicURL}/uploads/${file.name}` });
+
+    res.json({ fileName: file.name, filePath: `https://insurance-form.onrender.com/uploads/${file.name}` });
   });
 });
 
