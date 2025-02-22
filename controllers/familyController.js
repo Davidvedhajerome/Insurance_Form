@@ -97,7 +97,7 @@ const saveFamilyDataToExcel = (formattedData) => {
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "Family Data");
 
-  const filePath = `./exports/family_data_${Date.now()}.xlsx`; // Save with a timestamp for uniqueness
+  const filePath = `./output/family_data_${Date.now()}.xlsx`; // Save with a timestamp for uniqueness
   XLSX.writeFile(wb, filePath);
 
   return filePath;

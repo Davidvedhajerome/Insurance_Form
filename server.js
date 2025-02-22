@@ -60,9 +60,9 @@ app.post("/upload", (req, res) => {
       return res.status(500).send(err);
     }
 
-    // Use ngrok public URL for file access
 
-    res.json({ fileName: file.name, filePath: `https://insurance-form.onrender.com/uploads/${file.name}` });
+
+    res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
   });
 });
 

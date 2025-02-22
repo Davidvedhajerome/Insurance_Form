@@ -22,9 +22,10 @@ const FileUpload = ({ onFileUpload }) => {
 
     const formData = new FormData();
     formData.append('file', file);
+   const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:5000";
 
     try {
-      const res = await axios.post(`https://insurance-form.onrender.com/upload`, formData, {
+      const res = await axios.post(`${API_BASE_URL}/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 

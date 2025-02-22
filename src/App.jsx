@@ -136,8 +136,9 @@ const FamilyForm = () => {
     // Include uploaded files in the family data if needed
     const formData = { ...family, uploadedFiles };
 
+   const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:5000";
     try {
-      const response = await fetch("https://insurance-form.onrender.com/submit-form", {
+      const response = await fetch(`${API_BASE_URL}/submit-form`, {
         method: "POST", // Make sure it's POST
         headers: {
           "Content-Type": "application/json",

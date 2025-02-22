@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const familySchema = new mongoose.Schema({
   head: {
     name: String,
