@@ -9,8 +9,9 @@ const fileUpload = require("express-fileupload");
 
 const app = express();
 const PORT =10000;
+const hostname = '0.0.0.0';
 // Middleware
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: '*' })); // Allow all origins (for ngrok)
 app.use(bodyParser.json());
 app.use(fileUpload());
 app.use(express.static('public'));
@@ -113,6 +114,6 @@ app.post('/submit-form', async (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
+app.listen(PORT, hostname,() => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
