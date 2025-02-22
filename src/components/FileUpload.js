@@ -6,7 +6,7 @@ const FileUpload = ({ onFileUpload }) => {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
 
-  const ngrokURL = 'https://9280-36-255-17-207.ngrok-free.app'; // Replace with your actual ngrok URL
+  const ngrokURL = 'https://89e8-36-255-17-207.ngrok-free.app'; // Replace with your actual ngrok URL
 
   const onChange = (e) => {
     if (e.target.files.length > 0) {

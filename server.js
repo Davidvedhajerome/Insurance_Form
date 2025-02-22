@@ -61,7 +61,7 @@ app.post("/upload", (req, res) => {
     }
 
     // Use ngrok public URL for file access
-    const ngrokPublicURL = 'https://9280-36-255-17-207.ngrok-free.app';
+    const ngrokPublicURL = 'https://89e8-36-255-17-207.ngrok-free.app';
     res.json({ fileName: file.name, filePath: `${ngrokPublicURL}/uploads/${file.name}` });
   });
 });
