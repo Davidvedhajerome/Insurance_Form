@@ -51,29 +51,34 @@ const familySchema = new mongoose.Schema({
 const Family = mongoose.model('Family', familySchema);
 
 // 📤 Image Upload Endpoint
+
 app.post("/upload", async (req, res) => {
-  if (!req.files || Object.keys(req.files).length === 0) {
+  if (!req.files || !req.files.file) {
     return res.status(400).json({ msg: "No file was uploaded" });
   }
 
   const file = req.files.file; // Uploaded file
+  const fileName = file.name.split(".")[0]; // Remove extension for public_id
 
   try {
-    // Convert file data to base64
-    const uploadStr = `data:${file.mimetype};base64,${file.data.toString("base64")}/${file.name}`;
+    // Convert file buffer to base64
+    const uploadStr = `data:${file.mimetype};base64,${file.data.toString("base64")}`;
 
     const result = await cloudinary.uploader.upload(uploadStr, {
       folder: "uploads", // Cloudinary folder
-      resource_type: "auto"
+      resource_type: "auto",
+      public_id: fileName, // Set file name
+      overwrite: true, // If file exists, overwrite it
     });
+
     res.json({
-      message: '✅ Image uploaded successfully!',
+      message: "✅ Image uploaded successfully!",
       fileName: file.name,
-      cloudinaryUrl: result.secure_url
+      cloudinaryUrl: result.secure_url,
     });
   } catch (error) {
-    console.error('❌ Cloudinary Upload Error:', error);
-    res.status(500).json({ message: 'Failed to upload image' });
+    console.error("❌ Cloudinary Upload Error:", error);
+    res.status(500).json({ message: "Failed to upload image", error });
   }
 });
 
