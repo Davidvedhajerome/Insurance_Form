@@ -51,26 +51,21 @@ const familySchema = new mongoose.Schema({
 const Family = mongoose.model('Family', familySchema);
 
 // 📤 Image Upload Endpoint
-app.post('/upload', async (req, res) => {
+app.post("/upload", async (req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
-    return res.status(400).json({ msg: 'No file was uploaded' });
+    return res.status(400).json({ msg: "No file was uploaded" });
   }
 
-  const file = req.files.file;
-  const familyName = req.body.familyName || "general";
-  const folderName = `${familyName}`; // Store in `{family_name}/`/ Uploaded file
+  const file = req.files.file; // Uploaded file
 
   try {
     // Convert file data to base64
-    const uploadStr = `data:${file.mimetype};base64,${file.data.toString('base64')}`;
+    const uploadStr = `data:${file.mimetype};base64,${file.data.toString("base64")}/${file.name}`;
 
-    // Upload to Cloudinary
-    const result = await cloudinary.uploader.upload(file.tempFilePath, {
-      folder: folderName,
+    const result = await cloudinary.uploader.upload(uploadStr, {
+      folder: "uploads", // Cloudinary folder
       resource_type: "auto"
     });
-
-
     res.json({
       message: '✅ Image uploaded successfully!',
       fileName: file.name,
