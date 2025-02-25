@@ -24,7 +24,7 @@ const FileUpload = ({ onFileUpload }) => {
     formData.append('file', file);
 
     try {
-      const res = await axios.post(` https://7e7e-220-158-156-126.ngrok-free.app/upload`, formData, {
+      const res = await axios.post(`https://insurance-form.onrender.com/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
